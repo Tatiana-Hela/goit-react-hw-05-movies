@@ -56,7 +56,7 @@ const TrendingMovies = () => {
   return (
     <div>
       <ul>{elements}</ul>
-      {loading && <p>...Movies posts</p>}
+      {loading && <p>...Movies loading</p>}
       {error && <p>...Movies load failed</p>}
     </div>
   );

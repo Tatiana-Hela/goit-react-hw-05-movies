@@ -11,3 +11,10 @@ export const getMoviesTrending = async () => {
   const { data } = await instance.get('/trending/all/day?page=1');
   return data.results;
 };
+
+export const getSearchMovies = async query => {
+  const { data } = await instance.get(
+    `search/movie?language=en-US&query=${query}&page=1&include_adult=false`
+  );
+  return data.results;
+};
