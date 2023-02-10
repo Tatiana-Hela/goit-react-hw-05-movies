@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import MoviesList from 'components/MoviesList/MoviesList';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
 
 import { getSearchMovies } from 'components/Api/movies';
 
 const MoviesPage = () => {
-  const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search');
 
   useEffect(() => {
     if (!search) {
@@ -34,35 +37,18 @@ const MoviesPage = () => {
     fetchSearchMovies();
   }, [search]);
 
-  const searchMovies = ({ query }) => {
-    if (query.trim() === '') {
-      toast.error('Enter a search term.');
-      return;
-    }
-    if (query === search) {
-      toast.info('Same request. Enter a new word.');
-      return;
-    }
+  const searchMovies = ({ search }) => {
     setMovies([]);
-    setSearch(query);
+    setSearchParams({ search });
   };
-
   return (
-    <>
+    <div>
       <SearchMovies onSubmit={searchMovies} />
       <ToastContainer position="top-right" autoClose={3000} />
-      <ul>
-        {movies.map(({ id, original_title }) => {
-          return (
-            <li key={id}>
-              <Link>{original_title}</Link>
-            </li>
-          );
-        })}
-        {loading && <p>...Movies loading</p>}
-        {error && <p>...Movies load failed</p>}
-      </ul>
-    </>
+      {movies.length > 0 && <MoviesList movies={movies} />}
+      {loading && <p>...Movies loading</p>}
+      {error && <p>...Movies load failed</p>}
+    </div>
   );
 };
 export default MoviesPage;

@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom';
+
 import css from '../Menu/Menu.module.css';
+
+import items from './items';
 
 const getClassName = ({ isActive }) => {
   const className = isActive ? `${css.link} ${css.active}` : css.link;
@@ -7,20 +10,19 @@ const getClassName = ({ isActive }) => {
 };
 
 const Menu = () => {
+  const elements = items.map(({ id, to, text }) => {
+    return (
+      <li key={id}>
+        <NavLink className={getClassName} to={to}>
+          {text}
+        </NavLink>
+      </li>
+    );
+  });
+
   return (
     <div className={css.wrapper}>
-      <ul className={css.menu}>
-        <li>
-          <NavLink className={getClassName} to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={getClassName} to="/movies">
-            Movies
-          </NavLink>
-        </li>
-      </ul>
+      <ul className={css.menu}>{elements}</ul>
     </div>
   );
 };

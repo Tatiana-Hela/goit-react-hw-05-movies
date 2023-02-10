@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState } from 'react';
 
 import PropTypes from 'prop-types';
 const INITIAL_STATE = {
@@ -41,7 +41,7 @@ const SearchMovies = ({ onSubmit }) => {
     </div>
   );
 };
-export default memo(SearchMovies);
+export default SearchMovies;
 
 SearchMovies.propTypes = {
   onSubmit: PropTypes.func.isRequired,

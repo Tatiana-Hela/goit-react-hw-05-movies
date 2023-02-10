@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import MoviesList from 'components/MoviesList/MoviesList';
 
 import { getMoviesTrending } from 'components/Api/movies';
 
@@ -45,17 +46,9 @@ const TrendingMovies = () => {
   }, [setState]);
 
   const { movies, loading, error } = state;
-  const elements = movies.map(({ id, original_title, name }) => {
-    return (
-      <li key={id}>
-        {original_title ? <Link>{original_title}</Link> : <Link>{name}</Link>}
-      </li>
-    );
-  });
-  console.log(movies);
   return (
     <div>
-      <ul>{elements}</ul>
+      {movies.length > 0 && <MoviesList movies={movies} />}
       {loading && <p>...Movies loading</p>}
       {error && <p>...Movies load failed</p>}
     </div>
