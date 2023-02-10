@@ -4,17 +4,11 @@ const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
     <ul>
-      {movies.map(({ id, original_title, name }) => (
+      {movies.map(({ id, title }) => (
         <li key={id}>
-          {original_title ? (
-            <Link state={{ from: location }} to={`/movies/${id}`}>
-              {original_title}
-            </Link>
-          ) : (
-            <Link state={{ from: location }} to={`/movies/${id}`}>
-              {name}
-            </Link>
-          )}
+          <Link state={{ from: location }} to={`/movies/${id}`}>
+            {title}
+          </Link>
         </li>
       ))}
     </ul>

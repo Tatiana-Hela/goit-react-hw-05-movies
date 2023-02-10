@@ -14,16 +14,17 @@ const MoviesPage = () => {
   const [error, setError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get('search');
+  const query = searchParams.get('query');
 
   useEffect(() => {
-    if (!search) {
+    if (!query) {
       return;
     }
     const fetchSearchMovies = async () => {
       try {
         setLoading(true);
-        const data = await getSearchMovies(search);
+        const data = await getSearchMovies(query);
+        console.log(data);
         if (data.length === 0) {
           toast.error('There are no movies matching your request.');
         }
@@ -35,12 +36,13 @@ const MoviesPage = () => {
       }
     };
     fetchSearchMovies();
-  }, [search]);
+  }, [query]);
 
-  const searchMovies = ({ search }) => {
+  const searchMovies = ({ query }) => {
     setMovies([]);
-    setSearchParams({ search });
+    setSearchParams({ query });
   };
+
   return (
     <div>
       <SearchMovies onSubmit={searchMovies} />
