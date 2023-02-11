@@ -32,8 +32,8 @@ const Reviews = () => {
       {error && <p>...Movies load failed</p>}
       {reviews.length > 0 && (
         <ul>
-          {reviews.map(({ author, content }) => (
-            <li className={css.item}>
+          {reviews.map(({ id, author, content }) => (
+            <li key={id} className={css.item}>
               <h3>Author: {author}</h3>
               <p>{content}</p>
             </li>
