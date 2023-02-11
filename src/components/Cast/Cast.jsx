@@ -33,7 +33,7 @@ const Cast = () => {
       {error && <p>...Movies load failed</p>}
       <ul className={css.list}>
         {actors.map(({ id, name, profile_path, character }) => (
-          <li className={css.item}>
+          <li key={id} className={css.item}>
             <img
               src={
                 profile_path

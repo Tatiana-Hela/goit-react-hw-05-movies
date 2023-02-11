@@ -29,3 +29,7 @@ export const getMoviesCast = async id => {
   const { data } = await instance.get(`/movie/${id}/credits`);
   return data.cast;
 };
+export const getMoviesReviews = async id => {
+  const { data } = await instance.get(`/movie/${id}/reviews?page=1`);
+  return data.results;
+};

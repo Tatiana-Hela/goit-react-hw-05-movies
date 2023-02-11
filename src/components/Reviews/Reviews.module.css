@@ -1,0 +1,12 @@
+.item {
+  list-style: none;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-right: 20px;
+}
+.comment {
+  color: red;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-left: 50px;
+}
