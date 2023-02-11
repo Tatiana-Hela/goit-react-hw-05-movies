@@ -1,6 +1,8 @@
 import { useState } from 'react';
-
 import PropTypes from 'prop-types';
+
+import css from '../SearchMovies/SearchMovies.module.css';
+
 const INITIAL_STATE = {
   query: '',
 };
@@ -24,9 +26,10 @@ const SearchMovies = ({ onSubmit }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <label>
           <input
+            className={css.input}
             type="text"
             value={query}
             onChange={handleChange}
@@ -35,7 +38,9 @@ const SearchMovies = ({ onSubmit }) => {
             autoComplete="off"
             autoFocus
           />
-          <button type="submit">Search</button>
+          <button className={css.button} type="submit">
+            Search
+          </button>
         </label>
       </form>
     </div>
