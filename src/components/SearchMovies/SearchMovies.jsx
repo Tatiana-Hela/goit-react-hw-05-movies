@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { GrSearch } from 'react-icons/gr';
 import css from '../SearchMovies/SearchMovies.module.css';
 
 const INITIAL_STATE = {
@@ -27,7 +27,7 @@ const SearchMovies = ({ onSubmit }) => {
   return (
     <div>
       <form className={css.form} onSubmit={handleSubmit}>
-        <label>
+        <label className={css.label}>
           <input
             className={css.input}
             type="text"
@@ -39,6 +39,7 @@ const SearchMovies = ({ onSubmit }) => {
             autoFocus
           />
           <button className={css.button} type="submit">
+            <GrSearch />
             Search
           </button>
         </label>

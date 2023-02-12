@@ -6,7 +6,10 @@ import {
   Link,
   Outlet,
 } from 'react-router-dom';
-import { getMoviesDetails } from '../../Api/movies';
+import Error from 'components/Error/Error';
+import { ThreeDots } from 'react-loader-spinner';
+import { FaArrowLeft } from 'react-icons/fa';
+import { getMoviesDetails } from '../../api/movies';
 
 import css from '../MovieDetailsPage/MovieDetailsPage.module.css';
 
@@ -40,12 +43,20 @@ const MoviesDetailsPage = () => {
   return (
     <>
       <button className={css.goBack} onClick={goBack}>
-        Go back
+        <FaArrowLeft /> Go back
       </button>
       {movie && (
         <>
-          {loading && <p>...Movies loading</p>}
-          {error && <p>...Movies load failed</p>}
+          {error && <Error />}
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="#FF0000"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{ marginLeft: '45%' }}
+            visible={loading && true}
+          />
           <div className={css.card}>
             <img
               src={
@@ -68,16 +79,24 @@ const MoviesDetailsPage = () => {
               <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
             </div>
           </div>
-          <div>
-            <p>Additional information</p>
-            <ul>
-              <li>
-                <Link state={{ from }} to={`/movies/${movieId}/cast`}>
+          <div className={css.wrapper}>
+            <h3 className={css.title}>Additional information</h3>
+            <ul className={css.list}>
+              <li className={css.item}>
+                <Link
+                  className={css.link}
+                  state={{ from }}
+                  to={`/movies/${movieId}/cast`}
+                >
                   Cast
                 </Link>
               </li>
-              <li>
-                <Link state={{ from }} to={`/movies/${movieId}/reviews`}>
+              <li className={css.item}>
+                <Link
+                  className={css.link}
+                  state={{ from }}
+                  to={`/movies/${movieId}/reviews`}
+                >
                   Reviews
                 </Link>
               </li>

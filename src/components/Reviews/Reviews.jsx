@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMoviesReviews } from '../Api/movies';
-
+import { ThreeDots } from 'react-loader-spinner';
+import { getMoviesReviews } from '../api/movies';
+import Error from 'components/Error/Error';
 import css from '../Reviews/Reviews.module.css';
 
 const Reviews = () => {
@@ -28,8 +29,16 @@ const Reviews = () => {
   }, [movieId]);
   return (
     <>
-      {loading && <p>...Movies loading</p>}
-      {error && <p>...Movies load failed</p>}
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#FF0000"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{ marginLeft: '45%' }}
+        visible={loading && true}
+      />
+      {error && <Error />}
       {reviews.length > 0 && (
         <ul>
           {reviews.map(({ id, author, content }) => (
@@ -40,7 +49,7 @@ const Reviews = () => {
           ))}
         </ul>
       )}
-      {reviews.length === 0 && (
+      {reviews.length === 0 && !error && (
         <p className={css.comment}>We don't have any reviews for this movie</p>
       )}
     </>

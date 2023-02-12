@@ -1,56 +1,45 @@
 import { useState, useEffect } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 
 import MoviesList from 'components/MoviesList/MoviesList';
+import Error from 'components/Error/Error';
 
-import { getMoviesTrending } from 'components/Api/movies';
+import { getMoviesTrending } from 'components/api/movies';
 
 const TrendingMovies = () => {
-  const [state, setState] = useState({
-    movies: [],
-    loading: false,
-    error: null,
-  });
+  const [movies, setMovie] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        setState(prevState => ({
-          ...prevState,
-          loading: true,
-          error: null,
-        }));
-
+        setLoading(true);
         const result = await getMoviesTrending();
-        setState(prevState => {
-          return {
-            ...prevState,
-            movies: [...prevState.movies, ...result],
-          };
-        });
+        setMovie(result);
       } catch (error) {
-        setState(prevState => ({
-          ...prevState,
-          error,
-        }));
+        setError(error.massage);
       } finally {
-        setState(prevState => {
-          return {
-            ...prevState,
-            loading: false,
-          };
-        });
+        setLoading(false);
       }
     };
 
     fetchMovies();
-  }, [setState]);
+  }, []);
 
-  const { movies, loading, error } = state;
   return (
     <div>
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#FF0000"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{ marginLeft: '45%' }}
+        visible={loading && true}
+      />
+      {error && <Error />}
       {movies.length > 0 && <MoviesList movies={movies} />}
-      {loading && <p>...Movies loading</p>}
-      {error && <p>...Movies load failed</p>}
     </div>
   );
 };
