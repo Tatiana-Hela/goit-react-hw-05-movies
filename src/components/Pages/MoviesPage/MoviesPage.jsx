@@ -7,8 +7,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import MoviesList from 'components/MoviesList/MoviesList';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
 import Error from 'components/Error/Error';
-
-import { getSearchMovies } from '../../api/movies';
+import { getSearchMovies } from 'components/api/movies';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);

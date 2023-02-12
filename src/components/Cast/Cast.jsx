@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
-import { getMoviesCast } from '../api/movies';
+import { getMoviesCast } from 'components/api/movies';
 import Error from 'components/Error/Error';
 
 import css from '../Cast/Cast.module.css';

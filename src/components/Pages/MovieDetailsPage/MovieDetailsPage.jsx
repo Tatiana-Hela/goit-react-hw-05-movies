@@ -9,7 +9,7 @@ import {
 import Error from 'components/Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
 import { FaArrowLeft } from 'react-icons/fa';
-import { getMoviesDetails } from '../../api/movies';
+import { getMoviesDetails } from 'components/api/movies';
 
 import css from '../MovieDetailsPage/MovieDetailsPage.module.css';
 
