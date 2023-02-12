@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
-import { getMoviesReviews } from '../api/movies';
+import { getMoviesReviews } from 'components/Api/movies';
 import Error from 'components/Error/Error';
 import css from '../Reviews/Reviews.module.css';
 

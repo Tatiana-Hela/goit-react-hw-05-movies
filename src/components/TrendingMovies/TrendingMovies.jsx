@@ -4,7 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import MoviesList from 'components/MoviesList/MoviesList';
 import Error from 'components/Error/Error';
 
-import { getMoviesTrending } from 'components/api/movies';
+import { getMoviesTrending } from 'components/Api/movies';
 
 const TrendingMovies = () => {
   const [movies, setMovie] = useState([]);
