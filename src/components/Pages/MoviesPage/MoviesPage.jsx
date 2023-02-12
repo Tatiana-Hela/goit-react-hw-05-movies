@@ -26,7 +26,7 @@ const MoviesPage = () => {
       try {
         setLoading(true);
         const data = await getSearchMovies(query);
-        console.log(data);
+        // console.log(data);
         if (data.length === 0) {
           toast.error('There are no movies matching your request.');
         }
