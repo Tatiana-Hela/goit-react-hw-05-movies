@@ -8,7 +8,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
 import Error from 'components/Error/Error';
 
-import { getSearchMovies } from 'components/api/movies';
+import { getSearchMovies } from '../../api/movies';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
