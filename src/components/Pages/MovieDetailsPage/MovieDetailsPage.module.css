@@ -1,11 +1,11 @@
 .card {
+  padding-right: 10px;
   display: flex;
-  justify-content: space-between;
   gap: 30px;
   margin-left: 30px;
   margin-top: 15px;
   margin-bottom: 15px;
-  width: 1000px;
+  margin-right: 30px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .info {
