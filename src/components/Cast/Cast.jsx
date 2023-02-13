@@ -18,7 +18,7 @@ const Cast = () => {
       try {
         setLoading(true);
         const result = await getMoviesCast(Number(movieId));
-        console.log(result);
+        // console.log(result);
         setActors(result);
       } catch (error) {
         setError(error.massage);
@@ -51,7 +51,7 @@ const Cast = () => {
                   : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
               }
               alt={name}
-              width={100}
+              width={120}
               height={150}
             />
             <p className={css.name}>{name}</p>
