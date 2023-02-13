@@ -25,7 +25,7 @@ const SearchMovies = ({ onSubmit }) => {
   const { query } = state;
 
   return (
-    <div>
+    <main>
       <form className={css.form} onSubmit={handleSubmit}>
         <label className={css.label}>
           <input
@@ -44,7 +44,7 @@ const SearchMovies = ({ onSubmit }) => {
           </button>
         </label>
       </form>
-    </div>
+    </main>
   );
 };
 export default SearchMovies;

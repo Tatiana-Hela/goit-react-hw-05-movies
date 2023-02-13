@@ -9,7 +9,7 @@ import {
 import Error from 'components/Error/Error';
 import { ThreeDots } from 'react-loader-spinner';
 import { FaArrowLeft } from 'react-icons/fa';
-import { getMoviesDetails } from 'components/Api/movies';
+import { getMoviesDetails } from 'Api/movies';
 
 import css from '../MovieDetailsPage/MovieDetailsPage.module.css';
 
@@ -41,7 +41,7 @@ const MoviesDetailsPage = () => {
 
   const goBack = () => navigate(from);
   return (
-    <>
+    <main>
       <button className={css.goBack} onClick={goBack}>
         <FaArrowLeft /> Go back
       </button>
@@ -105,7 +105,7 @@ const MoviesDetailsPage = () => {
           </div>
         </>
       )}
-    </>
+    </main>
   );
 };
 export default MoviesDetailsPage;

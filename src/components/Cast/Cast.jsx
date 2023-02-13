@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
-import { getMoviesCast } from 'components/Api/movies';
+import { getMoviesCast } from 'Api/movies';
 import Error from 'components/Error/Error';
 
 import css from '../Cast/Cast.module.css';
@@ -56,6 +56,11 @@ const Cast = () => {
             />
             <p className={css.name}>{name}</p>
             <p>Character: {character}</p>
+            {actors.length === 0 && !error && (
+              <p className={css.comment}>
+                We don't have any actors for this movie
+              </p>
+            )}
           </li>
         ))}
       </ul>

@@ -16,3 +16,9 @@
 p {
   margin: 0;
 }
+.comment {
+  color: red;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-left: 50px;
+}

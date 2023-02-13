@@ -4,8 +4,8 @@ import Menu from './Menu/Menu';
 function App() {
   return (
     <div>
-      <Menu />
-      <UseRoutes />
+        <Menu />
+        <UseRoutes />
     </div>
   );
 }
